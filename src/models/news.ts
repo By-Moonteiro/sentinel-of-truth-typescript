@@ -1,7 +1,12 @@
 /**
  * Representa uma notícia para ser guardada.
  */
-export class News {
+export interface INews {
+  url: string;
+  status: string;
+};
+
+export class News implements INews {
     /**
      * Cria uma nova notícia.
      * @param url Url da notícia
