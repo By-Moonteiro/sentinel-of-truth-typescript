@@ -52,7 +52,7 @@ sentinel-of-truth-typescript/
 │   │
 │   ├── ui/                              # Interface do usuário (menus, input e exibição)
 │   │   ├── display.ts
-│   │   ├── input_service.ts   
+│   │   ├── user_input.ts   
 │   │   └── menu.ts
 │   │
 │   └── utils/                           # Funções utilitárias e configurações gerais
