@@ -1,0 +1,32 @@
+# =============================
+# Node / TypeScript Gitignore
+# =============================
+
+# Dependências
+node_modules/
+
+# Compilação
+dist/
+
+# Arquivos de logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cache do TypeScript
+*.tsbuildinfo
+
+# Sistema operacional
+.DS_Store
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Environment
+.env
+.env.*
