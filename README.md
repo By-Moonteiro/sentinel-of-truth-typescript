@@ -38,21 +38,21 @@ sentinel-of-truth-typescript/
 │   ├── index.ts                         # Código main
 │   │
 │   ├── controllers/                     # Orquestram o fluxo do programa; 
-│   │   └── news_controller.ts
+│   │   └── newsController.ts
 │   │
 │   ├── models/                          # Modelos/Entidades que representam objetos do domínio
 │   │   └── news.ts            
 │   │
 │   ├── repository/                      # Camada de  acesso a dados
-│   │   ├── abstract_repository.ts
-│   │   └── sqlite_repository.ts
+│   │   ├── iNewsRepository.ts
+│   │   └── sqliteRepository.ts
 │   │
 │   ├── services/                        # Lógica de negócio independente de I/O
-│   │   ├── report_generator.ts          # Geração e processamento de relatórios
+│   │   ├── reportGenerator.ts          # Geração e processamento de relatórios
 │   │
 │   ├── ui/                              # Interface do usuário (menus, input e exibição)
 │   │   ├── display.ts
-│   │   ├── user_input.ts   
+│   │   ├── userInput.ts   
 │   │   └── menu.ts
 │   │
 │   └── utils/                           # Funções utilitárias e configurações gerais

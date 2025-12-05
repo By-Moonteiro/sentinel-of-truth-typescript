@@ -1,7 +1,7 @@
 /**
  * Representa uma notícia para ser guardada.
  */
-export interface INews {
+interface INews {
   url: string;
   status: string;
 };
