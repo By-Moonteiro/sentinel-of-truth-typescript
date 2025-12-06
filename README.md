@@ -44,9 +44,12 @@ sentinel-of-truth-typescript/
 │   │   └── news.ts            
 │   │
 │   ├── repository/                      # Camada de  acesso a dados
-│   │   ├── iNewsRepository.ts
+│   │   ├── iNewsRepository.ts           # Interface de contrato
 │   │   └── sqliteRepository.ts
 │   │
+│   ├── types/                          # Interfaces (types)
+│   │   └── count.ts  
+│   │ 
 │   ├── services/                        # Lógica de negócio independente de I/O
 │   │   ├── reportGenerator.ts          # Geração e processamento de relatórios
 │   │
