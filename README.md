@@ -1,6 +1,6 @@
 # Sentinel of Truth (TypeScript)
 
-**Status:** `🚧 Em Andamento`
+**Status:** `🚧 Pausado Temporariamente`
 
 **Descrição do Projeto/Problema:** É preciso construir um sistema simples, direto e eficiente para organizar o banco de dados
 de notícias que serão analisadas por jornalistas. Precisam de um programa direto ao ponto, que
