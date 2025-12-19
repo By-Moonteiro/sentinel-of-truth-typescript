@@ -4,7 +4,7 @@ import type { Statement } from 'better-sqlite3';
 import { DATA, REPORT } from '../utils/config'; // Caminhos
 import { INewsRepository } from './iNewsRepository'; // Interface de contrato
 import { News } from '../models/news'; // Classe Modelo
-import { Count } from '../types/count'; // Interface de tipagem
+import { Count } from './types'; // Interface de tipagem
 
 /**
  * Responsável por adquirir e salvar os dados do programa.
