@@ -37,21 +37,17 @@ sentinel-of-truth-typescript/
 ├── src/                                 # Código-fonte principal do sistema
 │   ├── index.ts                         # Código main
 │   │
-│   ├── controllers/                     # Orquestram o fluxo do programa; 
-│   │   └── newsController.ts
-│   │
 │   ├── models/                          # Modelos/Entidades que representam objetos do domínio
 │   │   └── news.ts            
 │   │
 │   ├── repository/                      # Camada de  acesso a dados
 │   │   ├── iNewsRepository.ts           # Interface de contrato
-│   │   └── sqliteRepository.ts
-│   │
-│   ├── types/                          # Interfaces (types)
-│   │   └── count.ts  
+│   │   ├── sqliteRepository.ts
+│   │   └── types.ts
 │   │ 
 │   ├── services/                        # Lógica de negócio independente de I/O
-│   │   ├── reportGenerator.ts          # Geração e processamento de relatórios
+│   │   ├── reportGenerator.ts
+│   │   └── newsService.ts
 │   │
 │   ├── ui/                              # Interface do usuário (menus, input e exibição)
 │   │   ├── display.ts
