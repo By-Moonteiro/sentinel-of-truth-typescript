@@ -16,7 +16,11 @@ Ele é uma reescrita do projeto original feito com o Python. E tem como objetivo
 
 ## 🧠 Tecnologias e Conceitos
 
-- `...`
+- `readline`
+- `Better-sqlite3`
+- `Typescript`
+- `Ts-node`
+- `Nodemon`
 
 
 ## 🏗️ Estrutura do Projeto
@@ -74,6 +78,11 @@ sentinel-of-truth-typescript/
 - [ ]  ...
 - [ ]  ...
 
-## 🧩 O que aprendi
+## 🧩 O que aprendi (Básico)
 
+- [X] Receber input no TypeScript Node (lib readline)
+- [X] Criação de Interfaces
+- [X] Statement com Banco de dados
+- [X] Async/await
+- [X] Promises
 - [X] ...
