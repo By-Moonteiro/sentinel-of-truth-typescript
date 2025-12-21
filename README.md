@@ -41,6 +41,9 @@ sentinel-of-truth-typescript/
 ├── src/                                 # Código-fonte principal do sistema
 │   ├── index.ts                         # Código main
 │   │
+│   ├── controllers/                     # Orquestra o fluxo do programa
+│   │   └── newsController.ts  
+│   │      
 │   ├── models/                          # Modelos/Entidades que representam objetos do domínio
 │   │   └── news.ts            
 │   │
@@ -50,8 +53,11 @@ sentinel-of-truth-typescript/
 │   │   └── types.ts
 │   │ 
 │   ├── services/                        # Lógica de negócio independente de I/O
-│   │   ├── reportGenerator.ts
-│   │   └── newsService.ts
+│   │   ├── newsService.ts
+│   │   └── reportGenerator.ts
+│   │ 
+│   ├── shared/                        # Operações compartilhadas
+│   │   └── operationResult.ts
 │   │
 │   ├── ui/                              # Interface do usuário (menus, input e exibição)
 │   │   ├── display.ts
@@ -85,4 +91,5 @@ sentinel-of-truth-typescript/
 - [X] Statement com Banco de dados
 - [X] Async/await
 - [X] Promises
+- [X] Enum
 - [X] ...
