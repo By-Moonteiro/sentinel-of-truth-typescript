@@ -24,8 +24,8 @@ export class NewsController {
    */
   async insertNews(): Promise<boolean> {
 
-    const status = await getStatusChoice();
     const url = await urlInput();
+    const status = await getStatusChoice();
 
     const result = this.newsService.addNews(status, url);
 
@@ -139,8 +139,8 @@ export class NewsController {
    * Obtêm a quantidade de notícias cadastradas ou um log do erro.
    * @returns Retorna a quantidade de notícias cadastradas.
    */
-  countAllNews(): number {
-    const { result, data }  = this.newsService.countAllNews();
+  async countAllNews(): Promise<number> {
+    const { result, data } = await this.newsService.countAllNews();
 
     if (result === OperationResult.ERROR) {
       console.log('Erro ao contar as notícias.');
@@ -155,8 +155,8 @@ export class NewsController {
    * @param status O status da notícia que deseja contar.
    * @returns Retorna a quantidade de notícias cadastradas com o status escolhido.
    */
-  countNewsByStatus(status: string): number {
-    const { result, data }  = this.newsService.countNewsByStatus(status);
+  async countNewsByStatus(status: string): Promise<number> {
+    const {result, data} = await this.newsService.countNewsByStatus(status);
 
     if (result === OperationResult.ERROR) {
       console.log('Erro ao contar as notícias.');
