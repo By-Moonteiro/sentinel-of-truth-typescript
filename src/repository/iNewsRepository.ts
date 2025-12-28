@@ -25,9 +25,9 @@ export interface INewsRepository {
   getAllNewsStatus(status: string): News[];
 
   // Obtêm o numero total de notícias cadastradas.
-  countNews(): number;
+  countNews(): Promise<number>;
 
   // Obtêm o numero total de notícias por status.
-  countNewsStatus(status: string): number;
+  countNewsStatus(status: string): Promise<number>;
 
 }
