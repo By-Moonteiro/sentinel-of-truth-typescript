@@ -6,7 +6,9 @@ import readline from 'node:readline';
 export function clearScreen(): void {
   console.clear();
 }
-
+/**
+ * Aguarda o usuário pressionar a tecla Enter.
+ */
 export function waitForEnter(): Promise<void> {
   const rl = readline.createInterface({
     input: process.stdin,
