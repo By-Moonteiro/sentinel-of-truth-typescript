@@ -130,10 +130,10 @@ export class NewsService {
    * @returns Resultado da operação e o total de notícias salvas.
    * @example { result: OperationResult.SUCCESS, data: 10 }
    */
-  countAllNews(): { result: OperationResult, data: number } {
+  async countAllNews(): Promise<{ result: OperationResult, data: number }> {
 
     try {
-      const totalNews = this.newsRepository.countNews();
+      const totalNews = await this.newsRepository.countNews();
 
       return { result: OperationResult.SUCCESS, data: totalNews };
 
@@ -148,12 +148,12 @@ export class NewsService {
    * @returns Resultado da operação e o total de notícias salvas.
    * @example { result: OperationResult.SUCCESS, data: 3 }
    */
-  countNewsByStatus(status: string): { result: OperationResult, data: number } {
+  async countNewsByStatus(status: string): Promise<{ result: OperationResult, data: number }> {
 
     try {
-      const totalNews = this.newsRepository.countNewsStatus(status);
+      const totalNewsStatus = await this.newsRepository.countNewsStatus(status);
 
-      return { result: OperationResult.SUCCESS, data: totalNews };
+      return { result: OperationResult.SUCCESS, data: totalNewsStatus };
 
     } catch (_) {
       return { result: OperationResult.ERROR, data: 0 };
