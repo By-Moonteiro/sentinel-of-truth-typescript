@@ -21,6 +21,7 @@ Ele é uma reescrita do projeto original feito com o Python. E tem como objetivo
 - `Typescript`
 - `Ts-node`
 - `Nodemon`
+- `fs/promises`
 
 
 ## 🏗️ Estrutura do Projeto
@@ -35,14 +36,16 @@ sentinel-of-truth-typescript/
 ├── tsconfig.json
 │
 ├── data/                                # Arquivos persistidos (DB, relatórios)
-│   ├── report.txt
-│   └── news.db
+│   ├── news.db
+│   └── report.txt
 │
 ├── src/                                 # Código-fonte principal do sistema
 │   ├── index.ts                         # Código main
 │   │
 │   ├── controllers/                     # Orquestra o fluxo do programa
-│   │   └── newsController.ts  
+│   │   ├── menuController.ts
+│   │   ├── newsController.ts
+│   │   └── reportController.ts  
 │   │      
 │   ├── models/                          # Modelos/Entidades que representam objetos do domínio
 │   │   └── news.ts            
@@ -54,10 +57,11 @@ sentinel-of-truth-typescript/
 │   │ 
 │   ├── services/                        # Lógica de negócio independente de I/O
 │   │   ├── newsService.ts
-│   │   └── reportGenerator.ts
+│   │   └── reportService.ts
 │   │ 
 │   ├── shared/                        # Operações compartilhadas
-│   │   └── operationResult.ts
+│   │   ├── operationResult.ts
+│   │   └── status.ts
 │   │
 │   ├── ui/                              # Interface do usuário (menus, input e exibição)
 │   │   ├── display.ts
@@ -66,7 +70,8 @@ sentinel-of-truth-typescript/
 │   │
 │   └── utils/                           # Funções utilitárias e configurações gerais
 │       ├── config.ts
-│       └── helpers.ts
+│       ├── helpers.ts
+│       └── reportFormatter.ts
 │
 └── tests/                               # Testes 
     └── test.ts
@@ -79,7 +84,7 @@ sentinel-of-truth-typescript/
 
 ## 📈 Futuros Passos
 
-- [ ]  ...
+- [ ]  Refatorar tudo para versão Assíncrona
 - [ ]  ...
 - [ ]  ...
 - [ ]  ...
@@ -92,4 +97,4 @@ sentinel-of-truth-typescript/
 - [X] Async/await
 - [X] Promises
 - [X] Enum
-- [X] ...
+- [X] Estrutura de projeto mais "avançada"
