@@ -1,5 +1,10 @@
 import { ReportData } from '../services/reportService';
 
+/**
+ * Formata os dados do relatório em uma string legível.
+ * @param report Dados do relatório a ser formatado
+ * @returns String formatada do relatório
+ */
 export function formatReport(report: ReportData): string {
   return `
 ╔═════════════════════════════════════════════════════════╗
