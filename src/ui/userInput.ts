@@ -1,10 +1,5 @@
 import { createInterface } from 'readline';
-
-const STATUS: Record<number, string> = {
-  1: 'Verdadeiro',
-  2: 'Falso',
-  3: 'Não Checado'
-};
+import { STATUS_MAP, Status } from '../shared/status';
 
 // Tamanho máximo de caracteres que uma url pode ter
 const MAX_URL_LENGTH = 500; 
@@ -61,15 +56,15 @@ async function numberInput(msg: string): Promise<number> {
  * Solicita repetidamente ao usuário uma escolha de status válida.
  * @returns Status válido escolhido pelo usuário.
  */
-export async function getStatusChoice(): Promise<string> {
+export async function getStatusChoice(): Promise<Status> {
 
   console.log('Status: [ 1 ]: Verdadeiro | [ 2 ]: Falso | [ 3 ]: Não Checado');
 
   while (true) {
     const status = await numberInput('➤ Digite o Status desejado: ');
 
-    if (status in STATUS) {
-      return STATUS[status];
+    if (status in STATUS_MAP) {
+      return STATUS_MAP[status];
   }
 
     console.log('➤ Opção inválida! Escolha uma opção Válida.');
