@@ -129,8 +129,8 @@ export class SQLiteRepository implements INewsRepository{
    * Conta quantas notícias foram salvas no Banco de Dados
    * @returns Total de notícias salvas
    */
-  countNews(): number {
-      const { total } = this.countAllStmt.get() as Count;
+  async countNews(): Promise<number> {
+      const { total } = await this.countAllStmt.get() as Count;
       return total;
     }
 
@@ -138,8 +138,8 @@ export class SQLiteRepository implements INewsRepository{
    * Conta quantas notícias foram salvas de um status específico no BD.
    * @returns Total de notícias salvas de algum status.
    */
-  countNewsStatus(status: string): number {
-      const { total } = this.countEachStmt.get(status) as Count;
+  async countNewsStatus(status: string): Promise<number> {
+      const { total } =  await this.countEachStmt.get(status) as Count;
       return total;
   }
 
