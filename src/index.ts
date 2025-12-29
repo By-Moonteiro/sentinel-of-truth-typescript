@@ -40,6 +40,7 @@ async function main(): Promise<void> {
   finally {
     repository.closeDataBase();
     closeInput();
+    process.exit(0);
   }
 }
 
