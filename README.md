@@ -1,6 +1,6 @@
 # Sentinel of Truth (TypeScript)
 
-**Status:** `🚧 Em Andamento`
+**Status:** `✅ Completo - Funcional`
 
 **Descrição do Projeto/Problema:** É preciso construir um sistema simples, direto e eficiente para organizar o banco de dados
 de notícias que serão analisadas por jornalistas. Precisam de um programa direto ao ponto, que
@@ -29,7 +29,8 @@ Ele é uma reescrita do projeto original feito com o Python. E tem como objetivo
 ```
 sentinel-of-truth-typescript/
 │
-├── .gitignore                            
+├── .gitignore  
+├── .nvmrc                            
 ├── package-lock.json                    
 ├── package.json
 ├── README.md
@@ -80,7 +81,47 @@ sentinel-of-truth-typescript/
 
 ## 🚀 Como Executar
 
-....
+```
+
+## 🚀 Como executar o projeto
+
+### Pré-requisitos
+- Node.js **v24.11.1** (testado)
+- npm (incluído com o Node.js)
+- nvm (opcional, recomendado)
+
+---
+
+### 1️⃣ Clonar o repositório
+```bash
+git clone https://github.com/seu-usuario/sentinel-of-truth-typescript.git
+cd sentinel-of-truth-typescript
+```
+### 2️⃣ Usar a versão correta do Node (com nvm)
+
+Se você utiliza o nvm, execute:
+```bash
+nvm use
+```
+### 3️⃣ Instalar as dependências
+```bash
+npm install
+```
+### 4️⃣ Executar em modo desenvolvimento
+```bash
+npm run dev
+```
+
+### 🏗️ Build de produção
+
+Para compilar o projeto:
+```bash
+npm run build
+```
+### ▶️ Executar a versão compilada
+```bash
+npm start
+```
 
 ## 📈 Futuros Passos
 
