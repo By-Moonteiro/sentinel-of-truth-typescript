@@ -17,7 +17,6 @@ export function waitForEnter(): Promise<void> {
 
   return new Promise((resolve) => {
     rl.question('Pressione Enter para continuar...', () => {
-      rl.close();
       resolve();
     });
   });
