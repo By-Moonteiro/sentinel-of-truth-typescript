@@ -32,6 +32,7 @@ export class NewsController {
     switch (result) {
 
       case OperationResult.SUCCESS:
+        console.log('Notícia adicionada com sucesso.');
         return true;
 
       case OperationResult.ERROR:
@@ -64,6 +65,7 @@ export class NewsController {
         return false;
 
       default:
+        console.log('Notícia editada com sucesso.');
         return true;
     }
   }
@@ -96,6 +98,7 @@ export class NewsController {
         return false;
 
       default:
+        console.log('Notícia removida com sucesso.');
         return true;
     }
   }
