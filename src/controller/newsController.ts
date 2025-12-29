@@ -27,7 +27,7 @@ export class NewsController {
     const url = await urlInput();
     const status = await getStatusChoice();
 
-    const result = this.newsService.addNews(status, url);
+    const result = this.newsService.addNews(url, status);
 
     switch (result) {
 
