@@ -41,7 +41,7 @@ export class ReportService {
     }
 
     if (total.data === 0) {
-      return this.emptyReport(); // relatório vazio, porém vazio
+      return this.emptyReport(); // relatório vazio, porém válido
     }
 
     return {
