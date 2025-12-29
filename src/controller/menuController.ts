@@ -6,8 +6,12 @@ import { getMenuChoice } from '../ui/userInput';
 import { NewsDisplay } from '../ui/display';
 import { clearScreen } from '../utils/helpers';
 
+/**
+ * Controlador do menu principal e submenu.
+ */
 export class MenuController {
 
+  /** Mapeamento das ações do menu principal */
   private actions = new Map<number, () => Promise<boolean>>([
 
       [1, async () => {
@@ -35,6 +39,7 @@ export class MenuController {
       }]
     ]);
 
+  /** Mapeamento das ações do submenu */
   private subActions = new Map<number, () => Promise<boolean>>([
 
     [1, async () => {
@@ -64,6 +69,7 @@ export class MenuController {
     private reportController: ReportController
   ) {}
 
+  /** Executa o loop do menu principal */
   async run(): Promise<void> {
     let running = true;
 
@@ -83,6 +89,7 @@ export class MenuController {
     }
   }
 
+  /** Executa o loop do submenu */
   private async runSubMenu(): Promise<void> {
     let subRunning = true;
 
@@ -96,7 +103,7 @@ export class MenuController {
         console.log("Opção inválida.");
         continue;
       }
-      
+
       clearScreen();
       subRunning = await subAction();
       }
