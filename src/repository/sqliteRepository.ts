@@ -71,7 +71,7 @@ export class SQLiteRepository implements INewsRepository{
    * @param news Entidade contendo url e status.
    * @returns True se adicionou | False se ocorreu um erro.
    */
-  createNews(news: News): boolean {
+  async createNews(news: News): Promise<boolean> {
       const result = this.insertStmt.run(news.url, news.status)
       return result.lastInsertRowid > 0;
   }
@@ -80,7 +80,7 @@ export class SQLiteRepository implements INewsRepository{
    * Busca todas as notícias salvas no BD.
    * @returns Retorna uma lista de objetos contendo id, url, status
    */
-  getAllNews(): News[]{
+  async getAllNews(): Promise<News[]> {
       return this.loadStmt.all() as News[];
   }
 
@@ -90,7 +90,7 @@ export class SQLiteRepository implements INewsRepository{
    * @param newStatus Novo status para a notícia.
    * @returns true se atualizou | false caso tenha dado algum erro
    */
-  updateNews(id: number, newStatus: string): boolean {
+  async updateNews(id: number, newStatus: string): Promise<boolean> {
       const result = this.updateStmt.run(newStatus, id);
       return result.changes > 0;
 
@@ -101,7 +101,7 @@ export class SQLiteRepository implements INewsRepository{
    * @param id Id da notícia que vai ser deletada.
    * @returns true se apagou | false se ocorreu algum erro.
    */
-  deleteNews(id: number): boolean {
+  async deleteNews(id: number): Promise<boolean> {
       const result = this.deleteStmt.run(id)
       return result.changes > 0;
   }
@@ -111,7 +111,7 @@ export class SQLiteRepository implements INewsRepository{
    * @param id Id da notícia que vai ser procurada.
    * @returns Retorna o objeto contendo o id, url, status | undefined caso ela não exista
    */
-  getById(id: number): News | undefined {
+  async getById(id: number): Promise<News | undefined> {
       return this.findByIdStmt.get(id) as News | undefined;   
   }
 
@@ -120,8 +120,8 @@ export class SQLiteRepository implements INewsRepository{
    * @param status Status da notícia que deseja filtrar
    * @returns Uma lista com todas as notícias com status específico
    */
-  getAllNewsStatus(status: string): News[] {
-      return this.searchStatusStmt.all(status) as News[];
+  async getAllNewsStatus(status: string): Promise<News[]> {
+     return this.searchStatusStmt.all(status) as News[];
       
   }
 

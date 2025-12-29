@@ -14,13 +14,13 @@ export class NewsService {
    * @param status Status da notícia
    * @returns Resultado da operação de adição da notícia (SUCCESS, ERROR).
    */
-  addNews(url: string, status: string): OperationResult {
+  async addNews(url: string, status: string): Promise<OperationResult> {
     
     try {
 
       const news = new News(url, status);
 
-      const success = this.newsRepository.createNews(news);
+      const success = await this.newsRepository.createNews(news);
 
       if (!success) {
         return OperationResult.ERROR;
@@ -39,17 +39,17 @@ export class NewsService {
    * @param newStatus Novo status da notícia
    * @returns Resultado da operação de edição da notícia (SUCCESS, ERROR ou NOT_FOUND).
    */
-  editNews(id: number, newStatus: string): OperationResult {
+  async editNews(id: number, newStatus: string): Promise<OperationResult> {
 
     try {
 
-      const news = this.newsRepository.getById(id);
+      const news = await this.newsRepository.getById(id);
 
       if (!news) {
         return OperationResult.NOT_FOUND;
       }
 
-      const success = this.newsRepository.updateNews(id, newStatus);
+      const success = await this.newsRepository.updateNews(id, newStatus);
 
       if (!success) {
         return OperationResult.ERROR;
@@ -67,16 +67,16 @@ export class NewsService {
    * @param id ID da notícia a ser removida.
    * @returns Resultado da operação de remoção da notícia (SUCCESS, ERROR ou NOT_FOUND).
    */
-  removeNews(id: number): OperationResult {
+  async removeNews(id: number): Promise<OperationResult> {
 
     try {
 
-      const news = this.newsRepository.getById(id);
+      const news = await this.newsRepository.getById(id);
 
       if (!news) {
         return OperationResult.NOT_FOUND;
       }
-      const success = this.newsRepository.deleteNews(id);
+      const success = await this.newsRepository.deleteNews(id);
 
       if (!success) {
         return OperationResult.ERROR;
@@ -94,10 +94,10 @@ export class NewsService {
    * @returns Resultado da operação e um array das notícias buscadas.
    * @example { result: OperationResult.SUCCESS, data: [News] }
    */
-  loadAllNews(): { result: OperationResult, data: News[] } {
+  async loadAllNews(): Promise<{ result: OperationResult, data: News[] }> {
 
     try {
-      const newsList = this.newsRepository.getAllNews();
+      const newsList = await this.newsRepository.getAllNews();
 
       return { result: OperationResult.SUCCESS, data: newsList };
 
@@ -113,9 +113,9 @@ export class NewsService {
    * @returns Resultado da operação e um array das notícias buscadas com o status solicitado.
    * @example { result: OperationResult.SUCCESS, data: [News] }
    */
-  getNewsByStatus(status: string): { result: OperationResult, data: News[] } {
+  async getNewsByStatus(status: string): Promise<{ result: OperationResult, data: News[] }> {
     try {
-      const filterNews = this.newsRepository.getAllNewsStatus(status);
+      const filterNews = await this.newsRepository.getAllNewsStatus(status);
 
       return { result: OperationResult.SUCCESS, data: filterNews };
 

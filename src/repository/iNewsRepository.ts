@@ -7,22 +7,22 @@ import { News } from '../models/news'
 export interface INewsRepository {
 
   // Adiciona uma notícia ao Banco de dados
-  createNews(news: News): boolean;
+  createNews(news: News): Promise<boolean>;
 
   // Obtêm todas as notícias
-  getAllNews(): News[];
+  getAllNews(): Promise<News[]>;
 
   // Atualiza o status de uma notícia existente
-  updateNews(id: number, newStatus: string): boolean;
+  updateNews(id: number, newStatus: string): Promise<boolean>;
 
   // Deleta uma notícia permanentemente caso ela exista
-  deleteNews(id: number): boolean;
+  deleteNews(id: number): Promise<boolean>;
 
   // Procura uma notícia pelo Id
-  getById(id: number): News | undefined;
+  getById(id: number): Promise<News | undefined>;
 
   // Busca todas as notícias com status específicos
-  getAllNewsStatus(status: string): News[];
+  getAllNewsStatus(status: string): Promise<News[]>;
 
   // Obtêm o numero total de notícias cadastradas.
   countNews(): Promise<number>;

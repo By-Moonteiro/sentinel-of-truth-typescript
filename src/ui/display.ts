@@ -44,7 +44,7 @@ export class NewsDisplay {
   async displayAllNews(): Promise<void> {
     this.printHeader('Todas as Notícias');
 
-    const newsList = this.controller.loadAllNews();
+    const newsList = await this.controller.loadAllNews();
 
     if (newsList.length === 0) {
       console.log('Nenhuma notícia cadastrada.');
@@ -70,7 +70,7 @@ export class NewsDisplay {
   async displayNewsByStatus(title: string, status: string): Promise<void> {
     this.printHeader(title);
 
-    const filterNews = this.controller.loadNewsByStatus(status);
+    const filterNews = await this.controller.loadNewsByStatus(status);
 
     if (filterNews.length === 0) {
       console.log(`Nenhuma notícia encontrada com status: ${status}.`);

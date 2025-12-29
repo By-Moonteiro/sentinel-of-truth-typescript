@@ -27,7 +27,7 @@ export class NewsController {
     const url = await urlInput();
     const status = await getStatusChoice();
 
-    const result = this.newsService.addNews(url, status);
+    const result = await this.newsService.addNews(url, status);
 
     switch (result) {
 
@@ -52,7 +52,7 @@ export class NewsController {
     const id = await inputNewsId();
     const status = await getStatusChoice();
 
-    const result = this.newsService.editNews(id, status);
+    const result = await this.newsService.editNews(id, status);
 
     switch (result) {
 
@@ -85,7 +85,7 @@ export class NewsController {
       return false;
     }
 
-    const result = this.newsService.removeNews(id);
+    const result = await this.newsService.removeNews(id);
 
     switch (result) {
 
@@ -111,9 +111,9 @@ export class NewsController {
    * Obtêm um array com todas as notícias cadastradas ou um log do erro.
    * @returns Array com todas as notícias cadastradas (Em caso de erro, retorna lista vazio).
    */
-  loadAllNews(): News[] {
+  async loadAllNews(): Promise<News[]> {
 
-    const { result, data } = this.newsService.loadAllNews();
+    const { result, data } = await this.newsService.loadAllNews();
 
     if (result === OperationResult.ERROR) {
       console.log('Erro ao carregar as notícias.');
@@ -127,9 +127,9 @@ export class NewsController {
    * @param status O status da notícia que deseja.
    * @returns Array com todas as notícias cadastradas (Em caso de erro, retorna lista vazio).
    */
-  loadNewsByStatus(status: string): News[] {
+  async loadNewsByStatus(status: string): Promise<News[]> {
 
-    const { result, data } = this.newsService.getNewsByStatus(status);
+    const { result, data } = await this.newsService.getNewsByStatus(status);
 
     if (result === OperationResult.ERROR) {
       console.log('Erro ao carregar as notícias.');
