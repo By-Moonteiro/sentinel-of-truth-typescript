@@ -126,7 +126,7 @@ npm start
 ## 📈 Futuros Passos
 
 - [ ]  Refatorar tudo para versão Assíncrona
-- [ ]  Transformar o Menu em um Map / Object
+- [ ]  ...
 - [ ]  ...
 - [ ]  ...
 
@@ -139,3 +139,4 @@ npm start
 - [X] Promises
 - [X] Enum
 - [X] Estrutura de projeto mais "avançada"
+- [X] Map
