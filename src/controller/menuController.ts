@@ -8,6 +8,56 @@ import { clearScreen } from '../utils/helpers';
 
 export class MenuController {
 
+  private actions = new Map<number, () => Promise<boolean>>([
+
+      [1, async () => {
+        await this.newsController.insertNews();
+        return true;
+      }],
+      [2, async () => {
+        await this.runSubMenu();
+        return true;
+      }],
+      [3, async () => {
+        await this.newsController.changeNews();
+        return true;
+      }],
+      [4, async () => {
+        await this.newsController.removeNews();
+        return true;
+      }],
+      [5, async () => {
+        await this.reportController.generateReport();
+        return true;
+      }],
+      [6, async () => {
+        return false; // Saída do menu principal
+      }]
+    ]);
+
+  private subActions = new Map<number, () => Promise<boolean>>([
+
+    [1, async () => {
+      await this.newsDisplay.displayAllNews();
+      return true;
+    }],
+    [2, async () => {
+      await this.newsDisplay.displayNewsByStatus('Notícias Verdadeiras', 'Verdadeiro');
+      return true;
+    }],
+    [3, async () => {
+      await this.newsDisplay.displayNewsByStatus('Notícias Falsas', 'Falso');
+      return true;
+    }],
+    [4, async () => {
+      await this.newsDisplay.displayNewsByStatus('Notícias Não Checadas', 'Não Checado');
+      return true;
+    }],
+    [5, async () => {
+      return false; // Saída do submenu
+    }]
+  ]);
+
   constructor(
     private newsDisplay: NewsDisplay,
     private newsController: NewsController,
@@ -21,34 +71,15 @@ export class MenuController {
       showMenu();
 
       const choice = await getMenuChoice(1, 6);
+      const action = this.actions.get(choice);
 
-      switch (choice) {
-        case 1:
-          clearScreen();
-          await this.newsController.insertNews();
-          break;
-        case 2:
-          clearScreen();
-          await this.runSubMenu();
-          break;
-        case 3:
-          clearScreen();
-          await this.newsController.changeNews();
-          break;
-        case 4:
-          clearScreen();
-          await this.newsController.removeNews();
-          break;
-        case 5:
-          clearScreen();
-          await this.reportController.generateReport();
-          break;
-        case 6:
-          clearScreen();
-          running = false;
-          console.log("Encerrando o programa...");
-          break;
+      if (!action) {
+        console.log("Opção inválida.");
+        continue;
       }
+
+      clearScreen();
+      running = await action();
     }
   }
 
@@ -59,29 +90,15 @@ export class MenuController {
       showSubMenu();
 
       const subChoice = await getMenuChoice(1, 5);
+      const subAction = this.subActions.get(subChoice);
 
-      switch (subChoice) {
-      case 1:
-        await this.newsDisplay.displayAllNews();
-        clearScreen();
-        break;
-      case 2:
-        await this.newsDisplay.displayNewsByStatus('Notícias Verdadeiras', 'Verdadeiro');
-        clearScreen();
-        break;
-      case 3:
-        await this.newsDisplay.displayNewsByStatus('Notícias Falsas', 'Falso');
-        clearScreen();
-        break;
-      case 4:
-        await this.newsDisplay.displayNewsByStatus('Notícias Não Checadas', 'Não Checado');
-        clearScreen();
-        break;
-      case 5:
-        subRunning = false;
-        clearScreen();
-        break;
+      if (!subAction) {
+        console.log("Opção inválida.");
+        continue;
+      }
+      
+      clearScreen();
+      subRunning = await subAction();
       }
     }
   }
-}
