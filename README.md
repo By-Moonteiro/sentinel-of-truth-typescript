@@ -81,15 +81,10 @@ sentinel-of-truth-typescript/
 
 ## 🚀 Como Executar
 
-```
-
-## 🚀 Como executar o projeto
-
 ### Pré-requisitos
 - Node.js **v24.11.1** (testado)
 - npm (incluído com o Node.js)
 - nvm (opcional, recomendado)
-
 ---
 
 ### 1️⃣ Clonar o repositório
