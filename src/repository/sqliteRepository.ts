@@ -111,8 +111,8 @@ export class SQLiteRepository implements INewsRepository{
    * @param id Id da notícia que vai ser procurada.
    * @returns Retorna o objeto contendo o id, url, status | undefined caso ela não exista
    */
-  async getById(id: number): Promise<News | undefined> {
-      return this.findByIdStmt.get(id) as News | undefined;   
+  async getById(id: number): Promise<News | null> {
+      return this.findByIdStmt.get(id) as News | null;   
   }
 
   /**

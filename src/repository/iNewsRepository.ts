@@ -19,7 +19,7 @@ export interface INewsRepository {
   deleteNews(id: number): Promise<boolean>;
 
   // Procura uma notícia pelo Id
-  getById(id: number): Promise<News | undefined>;
+  getById(id: number): Promise<News | null>;
 
   // Busca todas as notícias com status específicos
   getAllNewsStatus(status: string): Promise<News[]>;
