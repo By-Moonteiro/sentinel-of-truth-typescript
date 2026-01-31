@@ -1,83 +1,17 @@
 # Sentinel of Truth (TypeScript)
 
-**Status:** `✅ Completo - Funcional`
-
-**Descrição do Projeto/Problema:** É preciso construir um sistema simples, direto e eficiente para organizar o banco de dados
-de notícias que serão analisadas por jornalistas. Precisam de um programa direto ao ponto, que
-funcione no terminal, para cadastrar links, classificar o conteúdo e fazer buscas rápidas.
-O mais importante: esse sistema precisa ser confiável. Nenhuma informação pode se perder, mesmo
-que o programa seja fechado. Ao abrir novamente, tudo tem que estar lá, intacto.
+> Projeto em formato CLI (Command Line Interface), focado em organização de código, persistência e regras de negócio.
+> Não possui interface web ou API HTTP.
 
 ## 📚 Sobre o projeto
 
-Este projeto foi desenvolvido com o objetivo de **Cadastrar links, classificar o conteúdo e fazer buscas rápidas**.
+Sentinel of Truth é um **CLI em TypeScript** para cadastrar links de notícias, classificar conteúdos e realizar buscas rápidas,
+com persistência em banco de dados. O sistema foi pensado para ser **simples, confiável e direto**.
 
-Ele é uma reescrita do projeto original feito com o Python. E tem como objetivo estudar um pouco sobre **TypeScript**, com a lógica básica de Python. Logo, o projeto é uma forma de tentar implementar os conhecimentos/estrutura do python, com a sintaxe do TypeScript, não criar um projeto profissional na linguagem.
+**Status:** ✅ Funcional (CLI estável, melhorias planejadas)
 
-## 🧠 Tecnologias e Conceitos
+> O projeto é uma reescrita do Sentinel of truth feito em python, e refinado em TypeScript.
 
-- `readline`
-- `Better-sqlite3`
-- `Typescript`
-- `Ts-node`
-- `Nodemon`
-- `fs/promises`
-
-
-## 🏗️ Estrutura do Projeto
-
-```
-sentinel-of-truth-typescript/
-│
-├── .gitignore  
-├── .nvmrc                            
-├── package-lock.json                    
-├── package.json
-├── README.md
-├── tsconfig.json
-│
-├── data/                                # Arquivos persistidos (DB, relatórios)
-│   ├── news.db
-│   └── report.txt
-│
-├── src/                                 # Código-fonte principal do sistema
-│   ├── index.ts                         # Código main
-│   │
-│   ├── controllers/                     # Orquestra o fluxo do programa
-│   │   ├── menuController.ts
-│   │   ├── newsController.ts
-│   │   └── reportController.ts  
-│   │      
-│   ├── models/                          # Modelos/Entidades que representam objetos do domínio
-│   │   └── news.ts            
-│   │
-│   ├── repository/                      # Camada de  acesso a dados
-│   │   ├── iNewsRepository.ts           # Interface de contrato
-│   │   ├── sqliteRepository.ts
-│   │   └── types.ts
-│   │ 
-│   ├── services/                        # Lógica de negócio independente de I/O
-│   │   ├── newsService.ts
-│   │   └── reportService.ts
-│   │ 
-│   ├── shared/                        # Operações compartilhadas
-│   │   ├── operationResult.ts
-│   │   └── status.ts
-│   │
-│   ├── ui/                              # Interface do usuário (menus, input e exibição)
-│   │   ├── display.ts
-│   │   ├── userInput.ts   
-│   │   └── menu.ts
-│   │
-│   └── utils/                           # Funções utilitárias e configurações gerais
-│       ├── config.ts
-│       ├── helpers.ts
-│       └── reportFormatter.ts
-│
-└── tests/                               # Testes 
-    └── test.ts
-
-```
 
 ## 🚀 Como Executar
 
@@ -85,6 +19,8 @@ sentinel-of-truth-typescript/
 - Node.js **v24.11.1** (testado)
 - npm (incluído com o Node.js)
 - nvm (opcional, recomendado)
+- Docker Compose
+- Docker
 ---
 
 ### 1️⃣ Clonar o repositório
@@ -92,31 +28,99 @@ sentinel-of-truth-typescript/
 git clone https://github.com/seu-usuario/sentinel-of-truth-typescript.git
 cd sentinel-of-truth-typescript
 ```
-### 2️⃣ Usar a versão correta do Node (com nvm)
-
+### 2️⃣ Crie o arquivo .env a partir do exemplo
+```bash
+cp .env.example .env
+```
+### 3️⃣ Usar a versão correta do Node (com nvm)
 Se você utiliza o nvm, execute:
 ```bash
 nvm use
 ```
-### 3️⃣ Instalar as dependências
+### 4️⃣ Subindo o ambiente com Docker 
+```bash
+docker compose up -d 
+```
+### 5️⃣ Instalar as dependências
 ```bash
 npm install
 ```
-### 4️⃣ Executar em modo desenvolvimento
+### 6️⃣ Executar o projeto
+```bash
+npm start
+```
+### 7️⃣ Executar em modo desenvolvimento
 ```bash
 npm run dev
 ```
 
-### 🏗️ Build de produção
 
-Para compilar o projeto:
-```bash
-npm run build
+## 🏗️ Estrutura do Projeto
+
 ```
-### ▶️ Executar a versão compilada
-```bash
-npm start
+sentinel-of-truth-typescript/
+│
+├── .env.example 
+├── .gitignore
+├── .nvmrc    
+├── docker-compose.yml                           
+├── package-lock.json                    
+├── package.json
+├── README.md
+├── tsconfig.json
+│
+├── data/                                # Relatório
+│   └── report.txt
+│
+├── docker/                              # Arquivo para a inicialização do Banco                        
+│   └── postgres
+│       └── init.sql
+│
+├── src/                                 # Código-fonte principal do sistema
+│   ├── index.ts                         # Código main
+│   │
+│   ├── controllers/                     # Fluxo da aplicação     
+│   ├── models/                          # Entidades do domínio           
+│   ├── repository/                      # Persistência (PostgreSQL)
+│   ├── services/                        # Regras de negócio
+│   ├── shared/                          # Código compartilhado entre camadas
+│   ├── ui/                              # CLI (menus e inputs)
+│   └── utils/                           # Helpers e configs
+│
+└── tests/                               # Testes 
+    └── test.ts
+
 ```
+
+### 🔄 Reset do ambiente (PostgreSQL)
+
+Isso remove containers **e volumes**, apagando todos os dados persistidos.
+
+```bash
+docker compose down -v
+docker compose up -d
+```
+
+
+## 🧠 Stack
+
+### Runtime & Linguagem
+- Node.js
+- TypeScript
+
+### Banco de Dados
+- PostgreSQL
+- pg (node-postgres)
+
+### Infra
+- Docker
+- Docker Compose
+- Dotenv
+
+### Ferramentas
+- Tsx
+- Nodemon
+
 
 ## 📈 Futuros Passos
 
@@ -125,7 +129,7 @@ npm start
 - [ ]  ...
 - [ ]  ...
 
-## 🧩 O que aprendi (Básico)
+## 🧩 Principais aprendizados
 
 - [X] Receber input no TypeScript Node (lib readline)
 - [X] Criação de Interfaces
@@ -134,4 +138,5 @@ npm start
 - [X] Promises
 - [X] Enum
 - [X] Estrutura de projeto mais "avançada"
-- [X] Map
+- [X] Criação de Pool connection
+- [X] Criação de docker-compose simples
