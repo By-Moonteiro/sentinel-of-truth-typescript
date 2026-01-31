@@ -1,7 +1,7 @@
-export type Status = 'Verdadeiro' | 'Falso' | 'Não Checado';
+export type Status = 'True' | 'False' | 'Unverified';
 
 export const STATUS_MAP: Record<number, Status> = {
-  1: 'Verdadeiro',
-  2: 'Falso',
-  3: 'Não Checado'
+  1: 'True',
+  2: 'False',
+  3: 'Unverified'
 };

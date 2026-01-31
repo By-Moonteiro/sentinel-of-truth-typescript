@@ -47,15 +47,15 @@ export class MenuController {
       return true;
     }],
     [2, async () => {
-      await this.newsDisplay.displayNewsByStatus('Notícias Verdadeiras', 'Verdadeiro');
+      await this.newsDisplay.displayNewsByStatus('Notícias Verdadeiras', 'True');
       return true;
     }],
     [3, async () => {
-      await this.newsDisplay.displayNewsByStatus('Notícias Falsas', 'Falso');
+      await this.newsDisplay.displayNewsByStatus('Notícias Falsas', 'False');
       return true;
     }],
     [4, async () => {
-      await this.newsDisplay.displayNewsByStatus('Notícias Não Checadas', 'Não Checado');
+      await this.newsDisplay.displayNewsByStatus('Notícias Não Checadas', 'Unverified');
       return true;
     }],
     [5, async () => {
