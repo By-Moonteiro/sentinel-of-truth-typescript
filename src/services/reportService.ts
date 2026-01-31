@@ -26,9 +26,9 @@ export class ReportService {
    */
   async generateReport(): Promise<ReportData> {
     const total = await this.service.countAllNews();
-    const trueCount = await this.service.countNewsByStatus('Verdadeiro');
-    const falseCount = await this.service.countNewsByStatus('Falso');
-    const unverifiedCount = await this.service.countNewsByStatus('Não Checado');
+    const trueCount = await this.service.countNewsByStatus('True');
+    const falseCount = await this.service.countNewsByStatus('False');
+    const unverifiedCount = await this.service.countNewsByStatus('Unverified');
 
     if (
       total.result !== OperationResult.SUCCESS || 
