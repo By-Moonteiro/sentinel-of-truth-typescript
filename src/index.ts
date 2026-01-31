@@ -33,14 +33,14 @@ async function main(): Promise<void> {
 
   try{
     await menu.run();
-  } 
-  
-  catch (error) {
-    console.error('Ocorreu um erro inesperado:', error);
-  }
-  
-  finally {
+
+  }finally {
     repository.closeDataBase();
     closeInput();
   }
 }
+
+main().catch((err) => {
+  console.error('Ocorreu um erro inesperado:', err);
+  process.exitCode = 1;
+});
