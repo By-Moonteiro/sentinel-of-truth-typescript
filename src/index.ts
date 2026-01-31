@@ -1,3 +1,5 @@
+import 'dotenv/config';
+import pool from '../src/shared/pool'
 import { NewsController } from './controller/newsController';
 import { MenuController } from './controller/menuController';
 import { ReportController } from './controller/reportController';
@@ -5,7 +7,7 @@ import { ReportController } from './controller/reportController';
 import { NewsService } from './services/newsService';
 import { ReportService } from './services/reportService';
 
-import { SQLiteRepository } from './repository/sqliteRepository';
+import { PostgreSQLRepository } from './repository/postgreRepository';
 
 import { closeInput } from './ui/userInput';
 import { NewsDisplay } from './ui/display';
@@ -15,7 +17,7 @@ import { NewsDisplay } from './ui/display';
 
 async function main(): Promise<void> {
 
-  const repository = new SQLiteRepository();
+  const repository = new PostgreSQLRepository(pool);
   const service = new NewsService(repository);
   const controller = new NewsController(service);
   const display = new NewsDisplay(controller);
